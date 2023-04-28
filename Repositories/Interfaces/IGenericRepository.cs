@@ -1,9 +1,9 @@
-﻿namespace Prova1BIMIntegracaoSoftwareProjeto1.Repositories.Interfaces;
+﻿using Prova1BIMIntegracaoSoftwareProjeto2.Entities;
+
+namespace Prova1BIMIntegracaoSoftwareProjeto1.Repositories.Interfaces;
 
 public interface IGenericRepository
 {
-    public Task Create();
-    public Task Read();
-    public Task Update();
-    public Task Delete();
+    public Task Create(List<FolhaCalculada> folhas);
+    public Task<List<FolhaCalculada>> Read();
 }

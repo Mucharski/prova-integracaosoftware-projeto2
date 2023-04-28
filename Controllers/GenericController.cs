@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Prova1BIMIntegracaoSoftwareProjeto1.Repositories.Interfaces;
+using Prova1BIMIntegracaoSoftwareProjeto2.Entities;
 
 namespace Prova1BIMIntegracaoSoftwareProjeto1.Controllers;
 
@@ -15,10 +16,10 @@ public class GenericController : ControllerBase
     }
     
     [HttpPost]
-    [Route("Create")]
-    public async Task<IActionResult> Create()
+    [Route("SaveFolhas")]
+    public async Task<IActionResult> SaveFolhas([FromBody] List<FolhaCalculada> folhas)
     {
-        await _repository.Create();
+        await _repository.Create(folhas);
         return Ok();
     }
     
@@ -26,20 +27,8 @@ public class GenericController : ControllerBase
     [Route("Read")]
     public async Task<IActionResult> Read()
     {
-        return Ok();
+        var folhas = await _repository.Read();
+        return Ok(folhas);
     }
     
-    [HttpPut]
-    [Route("Update")]
-    public async Task<IActionResult> Update()
-    {
-        return Ok();
-    }
-    
-    [HttpDelete]
-    [Route("Delete")]
-    public async Task<IActionResult> Delete()
-    {
-        return Ok();
-    }
 }
